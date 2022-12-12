@@ -1,0 +1,44 @@
+<div class="flex justify-content-between h-full pr-3 pl-3" >
+    <div class="flex flex-column overflow-y-auto pb-5" id="side">
+      <div class="py-2"></div>
+      <app-info-card
+        [loadingCount]="5"
+        [isLoading]="isLoading"
+        [items]="patientInfo"
+        [title]="'Patient Info'"
+        class="h-90"
+        [isEdit]="true"
+        [editUrl]="'/patients/' + patientId + '/edit'"
+      >
+      </app-info-card>
+
+      <button pButton [label]="'REMOVE PATIENT'" class="border-radius border-none w-220px mt-5 bg-red-500 w-12" [loading]="isRemoving"
+      [disabled]="isRemoving" (click)="remove()"></button>
+    </div>
+
+    <div class="h-screen w-9 pl-4 pr-4 overflow-y-auto">
+
+        <div class="py-2"></div>
+      
+        <div class="flex justify-content-between mb-3">
+          <div class="flex-1 mr-3 text-2xl font-bold overflow-hidden white-space-nowrap text-overflow-ellipsis">PATIENT'S DOCTOR</div>    
+        </div>
+   
+        <div class="card overflow-x-auto h-full">
+          <div class="vn-card flex flex-column justify-content-around p-5 w-full h-20rem">
+            <div class="flex justify-content-between">
+              <div>First Name:</div>
+              <div>{{patientDoctor?.firstName}}</div>
+            </div>
+            <div class="flex justify-content-between">
+              <div>Last Name:</div>
+              <div>{{patientDoctor?.lastName}}</div>
+            </div>
+            <div class="flex justify-content-between">
+              <div>Age:</div>
+              <div>{{patientDoctor?.age}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

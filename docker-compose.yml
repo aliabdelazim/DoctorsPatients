@@ -1,0 +1,18 @@
+version: '1.0'
+services:
+
+  server:
+    build: 
+      context: .
+      dockerfile: DockerfileBackEnd
+    image: patientsdoctors/fullstack_backend
+    ports:
+      - '3000:3000'
+
+  client:
+    build:  
+      context: .
+      dockerfile: DockerfileFrontEnd
+    image: patientsdoctors/fullstack_frontend
+    ports:
+      - '4200:4200'

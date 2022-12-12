@@ -1,0 +1,11 @@
+{
+  "type": "mysql",
+  "host": "sql9.freemysqlhosting.net",
+  "port": "3306",
+  "username": "sql9583871",
+  "password": "7gD8yRxFFB",
+  "database": "sql9583871",
+  "synchronize": true,
+  "logging": true,
+  "entities": ["dist/**/**.entity{.ts,.js}"]
+}

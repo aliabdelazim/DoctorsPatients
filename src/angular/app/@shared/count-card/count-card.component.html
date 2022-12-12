@@ -1,0 +1,11 @@
+<div class="vn-card flex border-round p-3 bg-white mb-3">
+  <p-avatar styleClass="bg-primary-50" [icon]="icon" shape="circle" [size]="'xlarge'" ></p-avatar>
+  <div class="flex flex-column ml-3" >
+    <div class="font-bold text-xl mb-3 white-space-nowrap">
+      {{title}}
+    </div>
+    <div class="text-primary-700 text-5xl">
+      <span *ngIf="!isLoading"> {{count }} </span> <p-skeleton [height]="'48px'" *ngIf="isLoading" ></p-skeleton>
+    </div>
+  </div>
+</div>

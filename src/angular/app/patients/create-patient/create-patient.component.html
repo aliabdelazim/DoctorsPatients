@@ -1,0 +1,48 @@
+<div class="h-full pl-4 pr-4 flex flex-column ">
+    <!-- <app-page-header [segments]="segments"></app-page-header> -->
+    <form class="flex justify-content-between h-filling" [formGroup]="form">
+        <div class="overflow-y-auto w-12">
+            <div class="col-12 pl-3 text-2xl font-bold overflow-hidden white-space-nowrap text-overflow-ellipsis">
+              LETS ADD A NEW PATIENT
+            </div>
+            <div class="col-12">
+              <div class="p-fluid p-formgrid p-grid mx-2">
+                <div class="p-field p-col-12 p-md-6 mb-4">
+                  <label class="font-bold required" for="name">First Name</label>
+                  <input type="text" class="vn-input border-round border-gray-100 mt-2" pInputText
+                    placeholder="E.g. Ali" formControlName="firstName" maxlength="25" />
+                </div>
+                <div class="p-field p-col-12 p-md-6 mb-4">
+                    <label class="font-bold required" for="name">Last Name</label>
+                    <input type="text" class="vn-input border-round border-gray-100 mt-2" pInputText
+                        placeholder="E.g. Mohamed" formControlName="lastName" maxlength="25" />
+                </div>
+                <div class="p-field p-col-12 p-md-6 mb-4">
+                    <label class="font-bold required" for="name">Age</label>
+                    <p-inputNumber type="text" class="vn-input border-round border-gray-100 mt-2" 
+                        placeholder="E.g. 27" formControlName="age" ></p-inputNumber>
+                </div>
+
+                <div class="p-field p-col-12 p-md-6 mb-4">
+                    <label class="font-bold required" for="name">Doctor</label>
+                    <p-dropdown
+                    [options]="doctors"
+                    placeholder="E.g Ali"
+                    styleClass="vn-input border-round mt-2"
+                    optionLabel="firstName"
+                    optionValue="id"
+                    formControlName="doctor"
+                    appendTo="body"
+                  ></p-dropdown>
+                </div>
+
+              </div>
+            </div>
+          </div>
+    </form>
+
+    <button pButton [label]="'SUBMIT'" [disabled]="!form.valid" [ngStyle]="{
+        'background-color': !form.valid ? 'var(--gray-100)' : 'var(--primary-600)'
+      }" class="border-radius border-none w-220px w-12 mb-auto" [loading]="loading"
+      [disabled]="loading" (click)="submit()"></button>
+</div>

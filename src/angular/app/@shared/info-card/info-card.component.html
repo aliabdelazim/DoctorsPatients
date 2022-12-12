@@ -1,0 +1,33 @@
+<div class="vn-card flex flex-column h-full border-round p-3 bg-primary mb-3">
+  <div
+    class="flex align-items-center justify-content-between pb-3 text-white"
+  >
+    <div>{{ title }}</div>
+    <i
+      *ngIf="isEdit"
+      [routerLink]="editUrl"
+      class="pi pi-user-edit text-sm cursor-pointer"
+    ></i>
+  </div>
+  <div class="flex flex-column">
+    <div
+      *ngFor="let item of items | keyvalue"
+      class="flex align-items-center justify-content-between mt-2"
+    >
+      <div class="text-sm text-white">{{ item.key }}</div>
+      <div class="text-sm text-white">{{ item.value }}</div>
+    </div>
+    <div
+      *ngFor="let i of loading"
+      class="flex align-items-center justify-content-between mt-2"
+    >
+      <div class="text-sm text-white">
+        <p-skeleton width="100px"></p-skeleton>
+      </div>
+      <div class="text-sm text-white capitalize">
+        <p-skeleton width="150px"></p-skeleton>
+      </div>
+    </div>
+    <ng-content></ng-content>
+  </div>
+</div>

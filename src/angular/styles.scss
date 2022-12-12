@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+body {
+    margin: 0;
+    font-family: "lato", "arial", sans-serif !important;
+    --primary-color: #2E73B9;
+    --primary-color-rgb: 46, 115, 185;
+    --border-radius: 6px;
+    // BLUE COLORS
+    --blue-0: #fbfcfe;
+    --blue-50: #eff7ff;
+    --blue-100: #dbefff;
+    --blue-200: #afd0f2;
+    --blue-400: #2e73b9;
+    --blue-600: #425191;
+    // GRAY COLORS
+    --gray-50: #cccccc !important;
+    --gray-100: #dadada;
+    --gray-400: #bdbdbd;
+    // BLACK COLORS
+    --black-300: #333333;
+    background-color: var(--primary-0) !important;
+    --shadow-box: 0px 5px 15px rgba(204, 204, 204, 0.15) !important;
+    color: #333333 !important;
+  }
+
+.vn-tabs {
+    .p-tabmenu-nav {
+      overflow-x: hidden;
+      overflow-y: auto;
+      flex-direction: column !important;
+      height: 100vh !important;
+      width: 112px !important;
+      background: white !important;
+      border: 1px solid var(--primary-50) !important;
+    }
+    .p-menuitem-link {
+      border: 0 !important;
+      padding: 0.5rem !important;
+      margin: 0.5rem 1rem !important;
+      border-radius: var(--border-radius) !important;
+    }
+  
+    :not(.p-highlight) .p-menuitem-link {
+      background: unset !important;
+    }
+  
+    .p-highlight .p-menuitem-link {
+      background-color: var(--primary-50) !important;
+    }
+  
+    .p-disabled {
+      opacity: 1 !important;
+    }
+  
+    .p-menuitem-link:not(.p-disabled):focus {
+      background: var(--primary-50) !important;
+      box-shadow: none !important;
+      border: 0 !important;
+    }
+  }  
+
+.vn-card {
+    box-shadow: var(--shadow-box);
+    width: 322px;
+  }
+  

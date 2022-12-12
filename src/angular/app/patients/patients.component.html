@@ -1,0 +1,71 @@
+<div class="h-screen pl-4 pr-4 overflow-y-auto">
+    <div class="py-2"></div>
+  
+    <div class="flex justify-content-between mb-3">
+      <div class="flex-1 mr-3 text-2xl font-bold overflow-hidden white-space-nowrap text-overflow-ellipsis">LIST OF ALL PATIENTS</div>
+      <div class="header-btns-lg">
+        <button
+          pButton
+          type="button"
+          label="ADD NEW PATIENT"
+          class="vn-btn bg-primary-600"
+          [routerLink]="'/patients/create'"
+          appIsPermitted
+        ></button>
+      </div>
+   
+    </div>
+  
+    <div class="card overflow-x-auto h-full">
+        <p-table
+          styleClass="p-datatable-lg"
+          responsiveLayout="stack"
+          [dataKey]="dataKey"
+          [columns]="cols"
+          [value]="items"
+          [lazy]="true"
+        >
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+          
+              <th *ngFor="let col of columns">
+                {{ col.label }}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr class="{{ routeUrl ? 'cursor-pointer' : '' }}">
+            
+              <td
+                *ngFor="let col of columns"
+                (click)="navigate(rowData['id'])"
+                [style.width]="col.width"
+                class="overflow-hidden text-overflow-ellipsis white-space-preline cursor-pointer"
+              >
+                <span class="p-column-title mr-3">{{ col.label }}</span>
+                <span
+                  *ngIf="!isLoading"
+                  class="flex-1 text-right {{ col.cssClass }}"
+                  [id]="rowData.id"
+                  >{{ rowData[col.key] }}</span
+                >
+                <p-skeleton
+                  *ngIf="isLoading"
+                  width="100px"
+                  height="1.5rem"
+                ></p-skeleton>
+             
+              </td>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="emptymessage" let-columns>
+            <tr>
+                <td [attr.colspan]="columns.length" class="text-center">
+                  There Is No Patients Added Yet, You Need To Add Some
+                </td>
+            </tr>
+          </ng-template>
+    </p-table>
+    </div>
+  </div>

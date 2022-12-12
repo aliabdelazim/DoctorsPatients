@@ -1,0 +1,81 @@
+<div class="flex justify-content-between h-full pr-3 pl-3" >
+    <div class="flex flex-column overflow-y-auto pb-5" id="side">
+      <div class="py-2"></div>
+      <app-info-card
+        [loadingCount]="5"
+        [isLoading]="isLoading"
+        [items]="doctorInfo"
+        [title]="'Doctor Info'"
+        class="h-90"
+        [isEdit]="true"
+        [editUrl]="'/doctors/' +doctorId + '/edit'"
+      >
+      </app-info-card>
+
+      <button pButton [label]="'REMOVE DOCTOR'" class="border-radius border-none w-220px mt-5 bg-red-500 w-12" [loading]="isRemoving"
+      [disabled]="isRemoving" (click)="remove()"></button>
+      <div
+          class="p-error font-light text-sm mt-2"
+        >
+        *All Doctor's Patients Will Be Removed As Well
+        </div>
+    </div>
+
+    <div class="h-screen w-9 pl-4 pr-4 overflow-y-auto">
+
+        <div class="py-2"></div>
+      
+        <div class="flex justify-content-between mb-3">
+          <div class="flex-1 mr-3 text-2xl font-bold overflow-hidden white-space-nowrap text-overflow-ellipsis">LIST OF THE DOCTOR'S PATIENTS</div>    
+        </div>
+   
+        <div class="card overflow-x-auto h-full">
+            <p-table
+              styleClass="p-datatable-lg"
+              responsiveLayout="stack"
+              [dataKey]="dataKey"
+              [columns]="cols"
+              [value]="doctorPatients"
+              [lazy]="true"
+            >
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                  <th *ngFor="let col of columns">
+                    {{ col.label }}
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                  <td
+                    *ngFor="let col of columns"
+                    [style.width]="col.width"
+                    class="overflow-hidden text-overflow-ellipsis white-space-preline "
+                  >
+                    <span class="p-column-title mr-3">{{ col.label }}</span>
+                    <span
+                      *ngIf="!isLoading"
+                      class="flex-1 text-right {{ col.cssClass }}"
+                      [id]="rowData.id"
+                      >{{ rowData[col.key] }}</span
+                    >
+                    <p-skeleton
+                      *ngIf="isLoading"
+                      width="100px"
+                      height="1.5rem"
+                    ></p-skeleton>
+                  </td>
+                </tr>
+              </ng-template>
+
+              <ng-template pTemplate="emptymessage" let-columns>
+                <tr>
+                    <td [attr.colspan]="columns.length" class="text-center">
+                      This Doctor Doesn't Have Any Patients yet
+                    </td>
+                </tr>
+              </ng-template>
+        </p-table>
+        </div>
+      </div>
+</div>

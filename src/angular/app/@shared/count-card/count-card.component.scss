@@ -1,0 +1,14 @@
+
+
+:host ::ng-deep .p-avatar.p-avatar-xl{
+  [class*="icon"]{
+    height: 31.5px;
+    width: 35px;
+  }
+  height: 72px !important;
+  width: 72px !important;
+}
+
+.vn-card{
+  width: 100% !important;
+}
